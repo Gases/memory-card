@@ -13,19 +13,22 @@ function App() {
   function checkDuplicates(array) {
     return new Set(array).size === array.length;
   }
-  
+
   function randomizeCards(card) {
     const cardsCopy = [...cards];
     setCards(cardsCopy.sort(() => Math.random() - 0.5));
     setClicked(clicked.concat(card));
   }
-  
+
+  React.useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score]);
+
   React.useEffect(() => {
     if (checkDuplicates(clicked) && clicked.length >= 0) {
       setScore(score + 1);
-      if (score > bestScore) {
-        setBestScore(score)
-      }
     } else {
       setScore(-1);
       setClicked([]);
@@ -41,7 +44,6 @@ function App() {
         <GameScore score={score} bestScore={bestScore} />
         <Cards randomize={randomizeCards} cards={cards} />
       </div>
-      <p>Clicked: {clicked.join(" ")}</p>
     </>
   );
 }

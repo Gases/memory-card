@@ -38,7 +38,9 @@
 }
 
 .card {
-  padding: 4px;
+  height: 120px;
+  width: 80px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,6 +58,6 @@
 }
 
 .sushi-image {
-  height: 48px;
-  width: 48px;
+  height: 64px;
+  width: 64px;
 }
